@@ -1,0 +1,130 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Optional npm cache folder
+.npm/
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Logs
+logs
+*.log
+logs/**
+
+# Dependency directories
+jspm_packages/
+
+# Build output
+dist/
+build/
+.out/
+.tmp/
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Environment files (do NOT ignore .env.example)
+.env
+.env.local
+.env.*.local
+.env.test
+.env.production
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# Editor directories and files
+.vscode/
+.idea/
+*.suo
+*.ntvs_analysis.dat
+*.user
+*.userosscache
+*.sln.docstates
+*.swp
+*~
+
+# IDE / Editor backup files
+*.bak
+*.tmp
+
+# MacOS Finder attributes
+.AppleDouble
+.LSOverride
+
+# Yarn PnP
+.pnp.cjs
+.pnp.js
+.pnp.loader.mjs
+
+# Parcel
+.cache/
+.parcel-cache/
+
+# VS Code workspace storage
+.vscode-test/
+
+# Testing
+coverage/
+coverage-final.json
+
+# dotenv environment variables file
+.env.*
+
+# TypeScript
+*.tsbuildinfo
+
+# Optional npm log files
+npm-debug.log*
+
+# OS generated files
+Thumbs.db
+
+# Cordova / Capacitor / Ionic / Platform build artifacts
+platforms/**/android/**/build/
+platforms/**/android/**/app/**/build/
+platforms/**/ios/**/build/
+platforms/**/ios/**/Pods/
+
+# Gradle
+.gradle/
+**/gradle-wrapper.jar
+
+# CocoaPods
+Pods/
+
+# Xcode
+build/
+DerivedData/
+*.xcworkspace
+*.xcuserstate
+
+# JetBrains
+.idea/
+*.iml
+
+# Optional: editor history
+.history/
+
+# Node REPL history
+.node_repl_history
+
+# Misc
+*.log
+
+# Keep package-lock.json tracked for reproducible installs
+# (uncomment the following line if you prefer to ignore lockfiles)
+# package-lock.json

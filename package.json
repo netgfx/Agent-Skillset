@@ -1,0 +1,23 @@
+{
+  "name": "agent-skillset",
+  "version": "1.0.0",
+  "description": "copilot skillset",
+  "homepage": "https://github.com/netgfx/Agent-Skillset#readme",
+  "bugs": {
+    "url": "https://github.com/netgfx/Agent-Skillset/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/netgfx/Agent-Skillset.git"
+  },
+  "license": "MIT",
+  "author": "M.Dobekidis",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
