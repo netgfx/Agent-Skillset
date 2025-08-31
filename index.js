@@ -39,14 +39,17 @@ app.use((req, res, next) => {
 // --- END OF LOGGING MIDDLEWARE ---
 
 // The core API endpoint that serves the agents.md file
-app.get("/api/agents", (req, res) => {
-  // 1. Get the platform "flavor" from the query parameter.
-  let platform = req.query.platform;
+app.post("/api/agents", (req, res) => {
+  // 1. Get the platform "flavor" from the request BODY.
+  // The context is passed in a `context` object within the body.
+  let platform = req.body.context ? req.body.context.repoName : undefined;
 
-  // 2. Basic security: Sanitize the input to prevent path traversal attacks.
-  if (!platform || !/^[a-zA-Z0-9-]+$/.test(platform)) {
+  console.log(`[INFO] Extracted platform from request body: "${platform}"`);
+
+  // 2. Basic security and fallback logic remains the same.
+  if (!platform || !/^[a-zA-Z0-9-._]+$/.test(platform)) {
     console.log(
-      `[WARN] Invalid or missing platform query. Falling back to 'default'. Input: "${req.query.platform}"`
+      `[WARN] Invalid or missing platform. Falling back to 'default'. Input: "${platform}"`
     );
     platform = "default";
   }
@@ -55,13 +58,11 @@ app.get("/api/agents", (req, res) => {
   const filePath = path.join(__dirname, "platforms", platform, "agents.md");
   console.log(`[INFO] Attempting to serve file from path: ${filePath}`);
 
-  // 4. Check if the file exists.
+  // 4. File serving logic remains the same.
   if (fs.existsSync(filePath)) {
-    // 5. If it exists, send the file back with the correct Markdown content type.
     res.setHeader("Content-Type", "text/markdown; charset=UTF-8");
     res.status(200).sendFile(filePath);
   } else {
-    // 6. If the specific platform file doesn't exist, try to serve the default one.
     console.log(
       `[WARN] Platform file not found for "${platform}". Attempting to serve default.`
     );
@@ -75,7 +76,6 @@ app.get("/api/agents", (req, res) => {
       res.setHeader("Content-Type", "text/markdown; charset=UTF-8");
       res.status(200).sendFile(defaultPath);
     } else {
-      // If even the default is missing, send a 404.
       console.error("[ERROR] Default agents.md not found. Sending 404.");
       res.status(404).send("Agent configuration not found.");
     }
