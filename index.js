@@ -43,19 +43,21 @@ app.use((req, res, next) => {
 app.post("/api/agents", (req, res) => {
   // 1. Try to get platform from direct parameter first (new approach)
   let platform = req.body.platform;
-  
+
   // 2. If no platform parameter, try to get from context (fallback to old approach)
   if (!platform && req.body.context && req.body.context.repoName) {
     platform = req.body.context.repoName;
-    console.log(`[INFO] No platform parameter, using context.repoName: "${platform}"`);
+    console.log(
+      `[INFO] No platform parameter, using context.repoName: "${platform}"`
+    );
   }
-  
+
   // 3. Log what we received
   console.log(`[INFO] Request body:`, JSON.stringify(req.body, null, 2));
   console.log(`[INFO] Final platform value: "${platform}"`);
 
   // 4. Validate platform and set fallback
-  const validPlatforms = ['web', 'android', 'ios', 'default'];
+  const validPlatforms = ["web", "android", "ios", "default"];
   if (!platform || !validPlatforms.includes(platform)) {
     console.log(
       `[WARN] Invalid or missing platform. Falling back to 'default'. Input: "${platform}"`
