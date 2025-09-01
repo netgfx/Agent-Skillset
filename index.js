@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 // Middleware to parse JSON bodies (good practice for future endpoints)
 app.use(express.json());
 
-// --- NEW LOGGING MIDDLEWARE ---
+// --- LOGGING MIDDLEWARE ---
 // This function will run for every request that comes into the server.
 app.use((req, res, next) => {
   // Create a timestamp for the log entry
